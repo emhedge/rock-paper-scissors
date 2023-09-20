@@ -59,3 +59,19 @@ console.log(playRound(playerSelection, computerSelection));
 // next, enclose playRound within game function, call playRound five times, and 
 // return the score after each round (playerScore and computerScore variables)
 // after 5 rounds, return the overall winner and respective tallies
+
+// function game(playerScore, computerScore) {
+// playerScore = a means of increasing score if player wins;
+// computerScore = a means of increasing score if player wins;
+
+// playRound(playerSelection, computerSelection);
+// console.log(return the score in a string);
+// playRound(playerSelection, computerSelection);
+// console.log(return the score in a string);
+// playRound(playerSelection, computerSelection);
+// console.log(return the score in a string);
+// playRound(playerSelection, computerSelection);
+// console.log(return the score in a string);
+// playRound(playerSelection, computerSelection);
+// console.log(return the score in a string and pronounce the winner);
+// }
