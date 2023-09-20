@@ -56,5 +56,6 @@ console.log("Your selection: " + playerSelection);
 console.log("The computer\'s selection: " + computerSelection);
 console.log(playRound(playerSelection, computerSelection));
 
-// let message = 
-// prompt(message, "");
+// next, enclose playRound within game function, call playRound five times, and 
+// return the score after each round (playerScore and computerScore variables)
+// after 5 rounds, return the overall winner and respective tallies
