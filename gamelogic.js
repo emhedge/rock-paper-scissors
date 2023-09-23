@@ -1,17 +1,21 @@
-
+// initial declaration of option variable for getComputerSelection function
 let option = ['Rock', 'Paper', 'Scissors'];
 
-// scoring init and scoring functions
+
+
+// init declaration of scoring and scoring functions
 let playerScore = 0;
 let computerScore = 0;
+
+// functions for game(playerPoint, computerPoint) {
+// playerPoint = a means of increasing score if player wins;
+// computerPoint = a means of increasing score if computer wins;
 
 // function for playerPoint
 function playerPoint() {
         playerScore++;
         return(playerScore);
 }
-
-
 // function for computerPoint
 function computerPoint() {
         computerScore++;
@@ -19,17 +23,34 @@ function computerPoint() {
 }
 
 
+// functions for obtaining computer and player selections
+
+// function for computer's random choice
+// should introduce the three options
+// then make a random choice of the three options
+// finally will return the randomOption to console.log
 function getComputerSelection(randomOption, computerSelection) {
         randomOption = Math.floor(Math.random() * option.length);
         computerSelection = (option[randomOption]);
         return(computerSelection);
 }
 
+
+// function for obtaining playerSelection
+// use prompt() to receive playerSelection
+// simply receives text and converts it to lowercase to ensure case insensitivity
+// consider converting to uppercase instead? or using localeCompare();
 function getPlayerSelection(playerSelection) {
         playerSelection = prompt("Rock, Paper, or Scissors! Ready? Shoot!");
         return(playerSelection.toLowerCase());
 }
 
+
+// function for a single round
+// work through the iterations of rock and alternatives
+// then through paper and the alternatives
+// then scissors and the alternatives
+// not efficient, but it works; can clean it up and streamline later
 function playRound() {
 
         let computerSelection = getComputerSelection();
@@ -69,34 +90,9 @@ function playRound() {
         }     
 }  
 
-game();
-
-
-
-
-// function for computer's random choice
-// should introduce the three options
-// then make a random choice of the three options
-// finally will return the randomOption to console.log
-
-
-// dead function halfway built trying to ensure case-insensitivity so we can receive anything we want
-// function useAnyCase() {
-//     if (playerSelection.toLowerCase() == 'rock') {
-//         return(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
-//     }
-// }
-
-
-
-// function for a single round
-// use prompt() to receive playerSelection
-// work through the iterations of rock and alternatives
-// then through paper and the alternatives
-// then scissors and the alternatives
-
-
-
+// next, enclose playRound within game function, call playRound five times, and 
+// return the score after each round (playerScore and computerScore variables)
+// after 5 rounds, return the overall winner and respective tallies
 function game() {
         playerScore = 0;
         computerScore = 0;
@@ -134,51 +130,11 @@ function game() {
                     
                     console.API.clear();
 
-                // playerScore = 0;
-                // computerScore = 0;
                 return(game());
         } else {
                 alert('OK, perhaps another time.')
         }
-
-
-        // playRound();
-        // prompt("Rock, Paper, or Scissors! Ready? Shoot!");
-        // playRound();
-        // prompt("Rock, Paper, or Scissors! Ready? Shoot!");
-        // playRound();
 }
 
 
-
-
-// let rockLose = (playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") => {
-//     return("You lose! Paper beats Rock!");
-//     // add point for computer
-// }
-
-
-
-// console.log("Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
-// console.log("The computer\'s selection: " + computerSelection);
-// console.log(playRound(playerSelection, computerSelection));
-
-// next, enclose playRound within game function, call playRound five times, and 
-// return the score after each round (playerScore and computerScore variables)
-// after 5 rounds, return the overall winner and respective tallies
-
-// function game(playerScore, computerScore) {
-// playerScore = a means of increasing score if player wins;
-// computerScore = a means of increasing score if player wins;
-
-// playRound(playerSelection, computerSelection);
-// console.log(return the score in a string);
-// playRound(playerSelection, computerSelection);
-// console.log(return the score in a string);
-// playRound(playerSelection, computerSelection);
-// console.log(return the score in a string);
-// playRound(playerSelection, computerSelection);
-// console.log(return the score in a string);
-// playRound(playerSelection, computerSelection);
-// console.log(return the score in a string and pronounce the winner);
-// }
+game();
