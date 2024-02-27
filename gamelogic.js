@@ -93,48 +93,48 @@ function playRound() {
 // next, enclose playRound within game function, call playRound five times, and 
 // return the score after each round (playerScore and computerScore variables)
 // after 5 rounds, return the overall winner and respective tallies
-function game() {
-        playerScore = 0;
-        computerScore = 0;
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        playRound();
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        playRound();
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        playRound();
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        playRound();
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        playRound();
+// function game() {
+//         playerScore = 0;
+//         computerScore = 0;
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         playRound();
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         playRound();
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         playRound();
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         playRound();
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         playRound();
 
-        console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-        if (playerScore > computerScore) {
-                console.log('Hey, not bad! You beat me.')
-        }       else if (computerScore > playerScore) {
-                console.log('Ouch, maybe you should practice some more. I win.')
-        }       else {
-                console.log('Wow, we tied! Care for another game?')
-        }
+//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
+//         if (playerScore > computerScore) {
+//                 console.log('Hey, not bad! You beat me.')
+//         }       else if (computerScore > playerScore) {
+//                 console.log('Ouch, maybe you should practice some more. I win.')
+//         }       else {
+//                 console.log('Wow, we tied! Care for another game?')
+//         }
 
-        let playAgain = confirm('Play another 5 games?');
+//         let playAgain = confirm('Play another 5 games?');
 
-        if (playAgain === true) {
+//         if (playAgain === true) {
 
-                if (typeof console._commandLineAPI !== 'undefined') {
-                        console.API = console._commandLineAPI; //chrome
-                    } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
-                        console.API = console._inspectorCommandLineAPI; //Safari
-                    } else if (typeof console.clear !== 'undefined') {
-                        console.API = console;
-                    }
+//                 if (typeof console._commandLineAPI !== 'undefined') {
+//                         console.API = console._commandLineAPI; //chrome
+//                     } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
+//                         console.API = console._inspectorCommandLineAPI; //Safari
+//                     } else if (typeof console.clear !== 'undefined') {
+//                         console.API = console;
+//                     }
                     
-                    console.API.clear();
+//                     console.API.clear();
 
-                return(game());
-        } else {
-                alert('OK, perhaps another time.')
-        }
-}
+//                 return(game());
+//         } else {
+//                 alert('OK, perhaps another time.')
+//         }
+// }
 
 
-game();
+playRound();
