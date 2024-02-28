@@ -15,34 +15,42 @@ const results = document.createElement('p');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
 
+// pScore.textContent = 'Player score: ';
+// cScore.textContent = 'Computer score: ';
 results.textContent = '';
 divResults.appendChild(playerChoice);
 divResults.appendChild(computerChoice);
 divResults.appendChild(results);
 
+
+// function for playerPoint
+function playerPoint() {
+        playerScore  += 1;
+        return(playerScore);
+}
+// function for computerPoint
+function computerPoint() {
+        computerScore += 1;
+        return(computerScore);
+}
+
+function wipeScore() {
+        playerScore = 0;
+        computerScore = 0;
+}
+
+
 const divScore = document.querySelector('div#score');
 const pScore = document.createElement('p');
 const cScore = document.createElement('p');
-pScore.textContent = 'Player score: ' + playerScore;
-cScore.textContent = 'Computer score: ' + computerScore;
 
-divScore.appendChild(pScore);
-divScore.appendChild(cScore);
+
 
 // functions for game(playerPoint, computerPoint) {
 // playerPoint = a means of increasing score if player wins;
 // computerPoint = a means of increasing score if computer wins;
 
-// function for playerPoint
-function playerPoint() {
-        playerScore++;
-        return(playerScore);
-}
-// function for computerPoint
-function computerPoint() {
-        computerScore++;
-        return(computerScore);
-}
+
 
 
 // functions for obtaining computer and player selections
@@ -67,19 +75,18 @@ function getComputerSelection(randomOption, computerSelection) {
         
         const btnRock = document.querySelector('#selections #rock');
         btnRock.addEventListener('click', () => {
-                playRound("rock", getComputerSelection());               
+                playRound("Rock", getComputerSelection());               
         });
-
 
         const btnPaper = document.querySelector('#selections #paper');
         btnPaper.addEventListener('click', () => {
-                playRound("paper", getComputerSelection());
+                playRound("Paper", getComputerSelection());
         });
 
 
         const btnScissors = document.querySelector('#selections #scissors');
         btnScissors.addEventListener('click', () => {
-                playRound("scissors", getComputerSelection());
+                playRound("Scissors", getComputerSelection());
         });
 
 
@@ -90,51 +97,55 @@ function getComputerSelection(randomOption, computerSelection) {
 // then scissors and the alternatives
 // not efficient, but it works; can clean it up and streamline later
 function playRound(playerSelection, computerSelection) {
-        // let playerSelection = getPlayerSelection();
-        // let computerSelection = getComputerSelection();
-
-        // console.log("your selection: " + playerSelection);
-        // results.textContent = "Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-        // results.textContent = "The computer\'s selection: " + computerSelection;
-        
-        
-
-        // playerChoice.textContent = "Your selection: " + playerSelection;  
-        computerChoice.textContent = "The computer\'s selection: " + computerSelection;
-
-
-        playerChoice.textContent = "Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
         
         // to achieve best of five games logic, consider changing it to computerPoint += 1 and returning 1 if game played and 0 if tied
 
-        if (playerSelection === "rock" && computerSelection === "Paper") {
+        if (playerSelection === "Rock" && computerSelection === "Paper") {
                 results.textContent = "You lose! Paper beats Rock!";
-                return(computerPoint());
-        }   else if (playerSelection === "rock" && computerSelection === "Scissors") {
+                computerPoint();
+        }   else if (playerSelection === "Rock" && computerSelection === "Scissors") {
                 results.textContent = "You win! Rock beats Scissors!";
-                return(playerPoint()); 
-        }   else if (playerSelection === "rock" && computerSelection === "Rock") {
+                playerPoint();
+        }   else if (playerSelection === "Rock" && computerSelection === "Rock") {
                 results.textContent = "Draw. Try again!";
-        }   else if (playerSelection === "paper" && computerSelection === "Scissors") {
+        }   else if (playerSelection === "Paper" && computerSelection === "Scissors") {
                 results.textContent = "You lose! Scissors beats Paper!";
-                return(computerPoint());
-        }   else if (playerSelection === "paper" && computerSelection === "Rock") {
+                computerPoint();
+        }   else if (playerSelection === "Paper" && computerSelection === "Rock") {
                 results.textContent = "You win! Paper beats Rock!";
-                return(playerPoint());
-        }   else if (playerSelection === "paper" && computerSelection === "Paper") {
+                playerPoint();
+        }   else if (playerSelection === "Paper" && computerSelection === "Paper") {
                 results.textContent = "Draw. Try again!";
-        }   else if (playerSelection === "scissors" && computerSelection === "Rock") {
+        }   else if (playerSelection === "Scissors" && computerSelection === "Rock") {
                 results.textContent = "You lose! Rock beats Scissors!";
-                return(computerPoint());
-        }   else if (playerSelection === "scissors" && computerSelection === "Paper") {
+                computerPoint();
+        }   else if (playerSelection === "Scissors" && computerSelection === "Paper") {
                 results.textContent = "You win! Scissors beats Paper!";
-                return(playerPoint());
-        }   else if (playerSelection === "scissors" && computerSelection === "Scissors") {
+                playerPoint();
+        }   else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
                 results.textContent = "Draw. Try again!";
         }   else {
                 results.textContent = "Oops, that\'s not one of the options. Try again.";
         }    
+        playerChoice.textContent = "Your selection: " + playerSelection;  
+        computerChoice.textContent = "The computer\'s selection: " + computerSelection;
+        
+        pScore.textContent = 'Player score: ' + playerScore;
+        cScore.textContent = 'Computer score: ' + computerScore;
+        divScore.appendChild(pScore);
+        divScore.appendChild(cScore);
+        
+        if (playerScore === 5) {
+                results.textContent = "Hey, not bad! You beat me.";
+                wipeScore();
+                console.log('game over');
+        } else if (computerScore === 5) {
+                results.textContent = "Oof, maybe you should practice some more. I win.";
+                wipeScore();
+                console.log('game over');
+        }
 }  
+
 
 
 
@@ -142,8 +153,10 @@ function playRound(playerSelection, computerSelection) {
 // return the score after each round (playerScore and computerScore variables)
 // after 5 rounds, return the overall winner and respective tallies
 // function game() {
-//         playerScore = 0;
-//         computerScore = 0;
+//         // playerScore = 0;
+//         // computerScore = 0;
+
+        
 //         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
 //         playRound();
 //         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
