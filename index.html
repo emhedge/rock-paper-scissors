@@ -4,31 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rock paper scissors</title>
-    <script src="./gamelogic.js"></script>
+    <script src="./gamelogic.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 
-    <div>
+</head>
+<body>
+    <div id="score">
+        <!-- 
+            display the running score, announce the winner
+            once one player reaches 5 points
+         -->
+    </div>
+    <div id="selections">
         <!-- 
             three buttons, event listener on each that call
             playRound with the correct playerSelection each 
             time a button is clicked (keep console.log for 
             this step)
         -->
+        <button class="selections" id="rock">Rock</button>
+        <button class="selections" id="paper">Paper</button>
+        <button class="selections" id="scissors">Scissors</button>
+
     </div>
-    <div>
+    <div id="results">
         <!--
             display results in div, change all consol.logs 
             into DOM methods
          -->
-    </div>
-    <div>
-        <!-- 
-            display the running score, announce the winner
-            once one player reaches 5 points
-         -->
+        <p>
+        </p>
     </div>
 
-</head>
-<body>
-    
 </body>
 </html>

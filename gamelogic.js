@@ -1,11 +1,33 @@
 // initial declaration of option variable for getComputerSelection function
-let option = ['Rock', 'Paper', 'Scissors'];
-
-
+const option = ['Rock', 'Paper', 'Scissors'];
 
 // init declaration of scoring and scoring functions
 let playerScore = 0;
 let computerScore = 0;
+
+const divResults = document.querySelector('div#results');
+const resultsHeading = document.querySelector('#results p');
+resultsHeading.textContent = 'Results: ';
+
+const buttons = document.querySelector('div#selections');
+
+const results = document.createElement('p');
+const playerChoice = document.createElement('p');
+const computerChoice = document.createElement('p');
+
+results.textContent = '';
+divResults.appendChild(playerChoice);
+divResults.appendChild(computerChoice);
+divResults.appendChild(results);
+
+const divScore = document.querySelector('div#score');
+const pScore = document.createElement('p');
+const cScore = document.createElement('p');
+pScore.textContent = 'Player score: ' + playerScore;
+cScore.textContent = 'Computer score: ' + computerScore;
+
+divScore.appendChild(pScore);
+divScore.appendChild(cScore);
 
 // functions for game(playerPoint, computerPoint) {
 // playerPoint = a means of increasing score if player wins;
@@ -36,14 +58,30 @@ function getComputerSelection(randomOption, computerSelection) {
 }
 
 
-// function for obtaining playerSelection
-// use prompt() to receive playerSelection
-// simply receives text and converts it to lowercase to ensure case insensitivity
-// consider converting to uppercase instead? or using localeCompare();
-function getPlayerSelection(playerSelection) {
-        playerSelection = prompt("Rock, Paper, or Scissors! Ready? Shoot!");
-        return(playerSelection.toLowerCase());
-}
+
+// const buttons = document.getElementsByClassName('.selections');
+
+// const div1 = document.createElement('div');
+// function getPlayerSelection() {
+
+        
+        const btnRock = document.querySelector('#selections #rock');
+        btnRock.addEventListener('click', () => {
+                playRound("rock", getComputerSelection());               
+        });
+
+
+        const btnPaper = document.querySelector('#selections #paper');
+        btnPaper.addEventListener('click', () => {
+                playRound("paper", getComputerSelection());
+        });
+
+
+        const btnScissors = document.querySelector('#selections #scissors');
+        btnScissors.addEventListener('click', () => {
+                playRound("scissors", getComputerSelection());
+        });
+
 
 
 // function for a single round
@@ -51,44 +89,54 @@ function getPlayerSelection(playerSelection) {
 // then through paper and the alternatives
 // then scissors and the alternatives
 // not efficient, but it works; can clean it up and streamline later
-function playRound() {
+function playRound(playerSelection, computerSelection) {
+        // let playerSelection = getPlayerSelection();
+        // let computerSelection = getComputerSelection();
 
-        let computerSelection = getComputerSelection();
-        let playerSelection = getPlayerSelection();
+        // console.log("your selection: " + playerSelection);
+        // results.textContent = "Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+        // results.textContent = "The computer\'s selection: " + computerSelection;
+        
+        
+
+        // playerChoice.textContent = "Your selection: " + playerSelection;  
+        computerChoice.textContent = "The computer\'s selection: " + computerSelection;
 
 
-        console.log("Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
-        console.log("The computer\'s selection: " + computerSelection);
-
+        playerChoice.textContent = "Your selection: " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+        
+        // to achieve best of five games logic, consider changing it to computerPoint += 1 and returning 1 if game played and 0 if tied
 
         if (playerSelection === "rock" && computerSelection === "Paper") {
-                console.log("You lose! Paper beats Rock!");
+                results.textContent = "You lose! Paper beats Rock!";
                 return(computerPoint());
         }   else if (playerSelection === "rock" && computerSelection === "Scissors") {
-                console.log("You win! Rock beats Scissors!");
-                return(playerPoint());
+                results.textContent = "You win! Rock beats Scissors!";
+                return(playerPoint()); 
         }   else if (playerSelection === "rock" && computerSelection === "Rock") {
-                console.log("Draw. Try again!");
+                results.textContent = "Draw. Try again!";
         }   else if (playerSelection === "paper" && computerSelection === "Scissors") {
-                console.log("You lose! Scissors beats Paper!");
+                results.textContent = "You lose! Scissors beats Paper!";
                 return(computerPoint());
         }   else if (playerSelection === "paper" && computerSelection === "Rock") {
-                console.log("You win! Paper beats Rock!");
+                results.textContent = "You win! Paper beats Rock!";
                 return(playerPoint());
         }   else if (playerSelection === "paper" && computerSelection === "Paper") {
-                console.log("Draw. Try again!");
+                results.textContent = "Draw. Try again!";
         }   else if (playerSelection === "scissors" && computerSelection === "Rock") {
-                console.log("You lose! Rock beats Scissors!");
+                results.textContent = "You lose! Rock beats Scissors!";
                 return(computerPoint());
         }   else if (playerSelection === "scissors" && computerSelection === "Paper") {
-                console.log("You win! Scissors beats Paper!");
+                results.textContent = "You win! Scissors beats Paper!";
                 return(playerPoint());
         }   else if (playerSelection === "scissors" && computerSelection === "Scissors") {
-                console.log("Draw. Try again!");
+                results.textContent = "Draw. Try again!";
         }   else {
-                console.log("Oops, that\'s not one of the options. Try again.");
-        }     
+                results.textContent = "Oops, that\'s not one of the options. Try again.";
+        }    
 }  
+
+
 
 // next, enclose playRound within game function, call playRound five times, and 
 // return the score after each round (playerScore and computerScore variables)
@@ -116,7 +164,7 @@ function playRound() {
 //                 console.log('Wow, we tied! Care for another game?')
 //         }
 
-//         let playAgain = confirm('Play another 5 games?');
+//         let playAgain = confirm('Play again?');
 
 //         if (playAgain === true) {
 
@@ -137,4 +185,4 @@ function playRound() {
 // }
 
 
-playRound();
+// playRound();
