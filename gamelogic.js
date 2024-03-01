@@ -5,23 +5,58 @@ const option = ['Rock', 'Paper', 'Scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
-const divResults = document.querySelector('div#results');
-const resultsHeading = document.querySelector('#results p');
-resultsHeading.textContent = 'Results: ';
+const divScore = document.querySelector('div#score');
+const pScore = document.createElement('p');
+const cScore = document.createElement('p');
+pScore.textContent = 'Player score: ' + playerScore;
+cScore.textContent = 'Computer score: ' + computerScore;
 
-const buttons = document.querySelector('div#selections');
+
+
+const divResults = document.querySelector('div#results');
+const resultsHeading = document.createElement('h2');
+
+
+const buttons = document.querySelector('div#selections .selections');
 
 const results = document.createElement('p');
+// const choicesText = document.createElement('div');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
+// const choicesImg = document.createElement('div');
+const playerChoiceThumb = document.createElement('img');
+const computerChoiceThumb = document.createElement('img');
 
-// pScore.textContent = 'Player score: ';
-// cScore.textContent = 'Computer score: ';
-results.textContent = '';
-divResults.appendChild(playerChoice);
-divResults.appendChild(computerChoice);
+const gameSelections = document.createElement('div');
+const playerSideSelection = document.createElement('div');
+const computerSideSelection = document.createElement('div');
+
+resultsHeading.textContent = 'Round results: ';
+
+divScore.appendChild(pScore);
+divScore.appendChild(cScore);
+
+playerSideSelection.appendChild(playerChoice);
+playerSideSelection.appendChild(playerChoiceThumb);
+computerSideSelection.appendChild(computerChoice);
+computerSideSelection.appendChild(computerChoiceThumb);
+gameSelections.appendChild(playerSideSelection);
+gameSelections.appendChild(computerSideSelection);
+divResults.appendChild(gameSelections);
+divResults.appendChild(resultsHeading);
 divResults.appendChild(results);
 
+pScore.setAttribute('class', 'score');
+cScore.setAttribute('class', 'score');
+resultsHeading.setAttribute('class', 'resultsHeading')
+results.setAttribute('id', 'gameResults')
+gameSelections.setAttribute('id', 'gameSelections');
+playerSideSelection.setAttribute('id', 'playerSideSelection');
+playerChoice.setAttribute('class', 'choiceText');
+playerChoiceThumb.setAttribute('class', 'choiceThumb');
+computerSideSelection.setAttribute('id', 'computerSideSelection');
+computerChoice.setAttribute('class', 'choiceText');
+computerChoiceThumb.setAttribute('class', 'choiceThumb');
 
 // function for playerPoint
 function playerPoint() {
@@ -40,21 +75,6 @@ function wipeScore() {
 }
 
 
-const divScore = document.querySelector('div#score');
-const pScore = document.createElement('p');
-const cScore = document.createElement('p');
-
-
-
-// functions for game(playerPoint, computerPoint) {
-// playerPoint = a means of increasing score if player wins;
-// computerPoint = a means of increasing score if computer wins;
-
-
-
-
-// functions for obtaining computer and player selections
-
 // function for computer's random choice
 // should introduce the three options
 // then make a random choice of the three options
@@ -65,29 +85,41 @@ function getComputerSelection(randomOption, computerSelection) {
         return(computerSelection);
 }
 
-
-
 // const buttons = document.getElementsByClassName('.selections');
 
 // const div1 = document.createElement('div');
 // function getPlayerSelection() {
 
         
-        const btnRock = document.querySelector('#selections #rock');
-        btnRock.addEventListener('click', () => {
-                playRound("Rock", getComputerSelection());               
-        });
+const btnRock = document.querySelector('#selections #rock');
+btnRock.addEventListener('click', () => {
+        playRound("Rock", getComputerSelection());               
+});
 
-        const btnPaper = document.querySelector('#selections #paper');
-        btnPaper.addEventListener('click', () => {
-                playRound("Paper", getComputerSelection());
-        });
+btnRock.innerHTML = '<img src="./images/rock.svg" />';
+btnRock.addEventListener('click', () => {
+        playerChoiceThumb.src = './images/player-rock.svg';               
+});
 
+const btnPaper = document.querySelector('#selections #paper');
+btnPaper.addEventListener('click', () => {
+        playRound("Paper", getComputerSelection());
+});
 
-        const btnScissors = document.querySelector('#selections #scissors');
-        btnScissors.addEventListener('click', () => {
-                playRound("Scissors", getComputerSelection());
-        });
+btnPaper.innerHTML = '<img src="./images/paper.svg" />';
+btnPaper.addEventListener('click', () => {
+        playerChoiceThumb.src = './images/player-paper.svg';               
+});
+
+const btnScissors = document.querySelector('#selections #scissors');
+btnScissors.addEventListener('click', () => {
+        playRound("Scissors", getComputerSelection());
+});
+
+btnScissors.innerHTML = '<img src="./images/scissors.svg" />';
+btnScissors.addEventListener('click', () => {
+        playerChoiceThumb.src = './images/player-scissors.svg';               
+});
 
 
 
@@ -99,6 +131,18 @@ function getComputerSelection(randomOption, computerSelection) {
 function playRound(playerSelection, computerSelection) {
         
         // to achieve best of five games logic, consider changing it to computerPoint += 1 and returning 1 if game played and 0 if tied
+
+        switch (computerSelection) {
+                case 'Rock':
+                        computerChoiceThumb.src = './images/computer-rock.svg';
+                        break;
+                case 'Paper':
+                        computerChoiceThumb.src = './images/computer-paper.svg';
+                        break;
+                case 'Scissors':
+                        computerChoiceThumb.src = './images/computer-scissors.svg';
+                        break;
+        };
 
         if (playerSelection === "Rock" && computerSelection === "Paper") {
                 results.textContent = "You lose! Paper beats Rock!";
@@ -128,12 +172,13 @@ function playRound(playerSelection, computerSelection) {
                 results.textContent = "Oops, that\'s not one of the options. Try again.";
         }    
         playerChoice.textContent = "Your selection: " + playerSelection;  
-        computerChoice.textContent = "The computer\'s selection: " + computerSelection;
+        computerChoice.textContent = "Computer\'s selection: " + computerSelection;
         
+
+
         pScore.textContent = 'Player score: ' + playerScore;
         cScore.textContent = 'Computer score: ' + computerScore;
-        divScore.appendChild(pScore);
-        divScore.appendChild(cScore);
+
         
         if (playerScore === 5) {
                 results.textContent = "Hey, not bad! You beat me.";
