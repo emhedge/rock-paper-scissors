@@ -5,18 +5,22 @@ const option = ['Rock', 'Paper', 'Scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
+// init declaration of scoring elements and content
 const divScore = document.querySelector('div#score');
 const pScore = document.createElement('p');
 const cScore = document.createElement('p');
 pScore.textContent = 'Player score: ' + playerScore;
 cScore.textContent = 'CPU score: ' + computerScore;
 
+
 const buttons = document.querySelector('div#selections .selections');
 
+// init declaration of placeholder content to avoid page shifts
 const selectionsPlaceholder = document.createElement('p');
 selectionsPlaceholder.setAttribute('class', 'placeholder');
-selectionsPlaceholder.textContent = "Pick your sign, then we'll see who wins."
+selectionsPlaceholder.textContent = "When you're ready, pick your move."
 
+// init declaration of page elements
 const divResults = document.querySelector('div#results');
 const resultsHeading = document.createElement('h2');
 const results = document.createElement('p');
@@ -28,23 +32,13 @@ const computerChoice = document.createElement('p');
 const playerChoiceThumb = document.createElement('img');
 const computerChoiceThumb = document.createElement('img');
 const footer = document.querySelector('div#footer');
-// const footerLeft = document.createElement('div');
-// const footerRight = document.createElement('div');
-// const footerLeftText= document.createElement('p');
-// const footerRightText= document.createElement('p');
 
-// footerLeftText.textContent = "";
-// footerRightText.textContent = "Copyright ©" + <a href="">emhedge</a> + "2024";
-resultsHeading.textContent = "Round results: ";
+// placeholder text
 
-// footerLeft.appendChild(footerLeftText)
-// footerRight.appendChild(footerRightText);
-// footer.appendChild(footerLeft);
-// footer.appendChild(footerRight);
 
+// append main page nodes and elements
 divScore.appendChild(pScore);
 divScore.appendChild(cScore);
-
 playerSideSelection.appendChild(playerChoice);
 playerSideSelection.appendChild(playerChoiceThumb);
 computerSideSelection.appendChild(computerChoice);
@@ -55,8 +49,6 @@ divResults.appendChild(selectionsPlaceholder);
 divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
 divResults.appendChild(results);
-
-// divResults.appendChild(footer);
 
 playerChoiceThumb.src = './images/player-placeholder.svg';
 computerChoiceThumb.src = './images/computer-placeholder.svg';
@@ -72,9 +64,6 @@ playerChoiceThumb.setAttribute('class', 'choiceThumb');
 computerSideSelection.setAttribute('id', 'computerSideSelection');
 computerChoice.setAttribute('class', 'choiceText');
 computerChoiceThumb.setAttribute('class', 'choiceThumb');
-// footer.setAttribute('id', 'footer');
-// footerLeft.setAttribute('id', 'footerLeft');
-// footerRight.setAttribute('id', 'footerRight');
 
 // function for playerPoint
 function playerPoint() {
@@ -86,7 +75,7 @@ function computerPoint() {
         computerScore += 1;
         return(computerScore);
 }
-
+// function for wiping the scoreboard after a win/loss
 function wipeScore() {
         playerScore = 0;
         computerScore = 0;
@@ -96,19 +85,16 @@ function wipeScore() {
 // function for computer's random choice
 // should introduce the three options
 // then make a random choice of the three options
-// finally will return the randomOption to console.log
+// finally will return the randomOption to playRound()
 function getComputerSelection(randomOption, computerSelection) {
         randomOption = Math.floor(Math.random() * option.length);
         computerSelection = (option[randomOption]);
         return(computerSelection);
 }
 
-// const buttons = document.getElementsByClassName('.selections');
-
-// const div1 = document.createElement('div');
-// function getPlayerSelection() {
-
-        
+// event listeners receive click, pass playerSelection to 
+// playRound() along with getComputerSelection();
+// passes corresponding img src to playerChoiceThumb
 const btnRock = document.querySelector('#selections #rock');
 btnRock.addEventListener('click', () => {
         playRound("Rock", getComputerSelection());               
@@ -139,10 +125,9 @@ btnScissors.addEventListener('click', () => {
         playerChoiceThumb.src = './images/player-scissors.svg';               
 });
 
+// init declaration to ensure selectionsPlaceholder is removed
+// only after the first round;
 let playedGames = 0;
-
-
-        // selectionsPlaceholder.style = ('margin-top', '0px')
 
 // function for a single round
 // work through the iterations of rock and alternatives
@@ -167,6 +152,8 @@ function playRound(playerSelection, computerSelection) {
                         computerChoiceThumb.src = './images/computer-scissors.svg';
                         break;
         };
+
+        resultsHeading.textContent = "Round results: ";
 
         if (playerSelection === "Rock" && computerSelection === "Paper") {
                 results.textContent = "You lose! Paper beats Rock!";
@@ -194,79 +181,24 @@ function playRound(playerSelection, computerSelection) {
                 results.textContent = "Draw. Try again!";
         }   else {
                 results.textContent = "Oops, that\'s not one of the options. Try again.";
-        }    
+        }
+        
+        // updates player score and selection
+        pScore.textContent = 'Player score: ' + playerScore;
+        cScore.textContent = 'CPU score: ' + computerScore;
         playerChoice.textContent = "Your selection: " + playerSelection;  
         computerChoice.textContent = "CPU selection: " + computerSelection;
         
-
-
-        pScore.textContent = 'Player score: ' + playerScore;
-        cScore.textContent = 'CPU score: ' + computerScore;
-
-        
+        // after reaching 5 games won by player/cpu, resultsHeading.textContent
+        // is updated and a game result is announced, then the score is wiped
+        // for a new round to begin;
         if (playerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Hey, not bad! You win.";
                 wipeScore();
-                console.log('game over');
         } else if (computerScore === 5) {
                 resultsHeading.textContent = "Game results:"
-                results.textContent = "Oof, maybe you should practice some more. I win.";
+                results.textContent = "Oof, you should practice some more. I win.";
                 wipeScore();
-                console.log('game over');
         }
 }  
-
-
-
-
-// next, enclose playRound within game function, call playRound five times, and 
-// return the score after each round (playerScore and computerScore variables)
-// after 5 rounds, return the overall winner and respective tallies
-// function game() {
-//         // playerScore = 0;
-//         // computerScore = 0;
-
-        
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         playRound();
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         playRound();
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         playRound();
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         playRound();
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         playRound();
-
-//         console.log('Your score: ' + playerScore + '. ' + 'The computer\'s score: ' + computerScore + '.')
-//         if (playerScore > computerScore) {
-//                 console.log('Hey, not bad! You beat me.')
-//         }       else if (computerScore > playerScore) {
-//                 console.log('Ouch, maybe you should practice some more. I win.')
-//         }       else {
-//                 console.log('Wow, we tied! Care for another game?')
-//         }
-
-//         let playAgain = confirm('Play again?');
-
-//         if (playAgain === true) {
-
-//                 if (typeof console._commandLineAPI !== 'undefined') {
-//                         console.API = console._commandLineAPI; //chrome
-//                     } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
-//                         console.API = console._inspectorCommandLineAPI; //Safari
-//                     } else if (typeof console.clear !== 'undefined') {
-//                         console.API = console;
-//                     }
-                    
-//                     console.API.clear();
-
-//                 return(game());
-//         } else {
-//                 alert('OK, perhaps another time.')
-//         }
-// }
-
-
-// playRound();

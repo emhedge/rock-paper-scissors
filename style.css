@@ -5,9 +5,9 @@ body {
     min-height: 100vh;
     align-items: center;
     /* justify-content: space-between; */
-    /* background-image: linear-gradient(to bottom right, #4F0341, #FFFFFF); */
-    background-color: #FDF8F0;
-    color: #4F0341;
+    background-image: linear-gradient(to bottom, #FDF8F0, #e8dbd6);
+    /* background-color: #FDF8F0; */
+    color: black;
 }
 
 #heading {
@@ -27,10 +27,8 @@ div#selections {
 button {
     border-radius: 5px;
     padding: 8px;
-    /* background-color: #B2B5E0; */
+    background-color: #d7d7be;
 }
-
-
 
 #score {
     display: flex;
@@ -67,35 +65,11 @@ h2.resultsHeading {
     margin-bottom: 0px;
 }
 
-/* div#choices {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 100%;
-    gap: 32px;
-    align-items: space-between;
-} */
-
 #gameSelections {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-
-/* #playerSideSelection {
-    padding: 8px 16px;
-    gap: 32px;
-    align-items: left;
-    max-width: 50%;
-    justify-content: left;
-}
-
-#computerSideSelection {
-    padding: 8px 16px;
-    gap: 32px;
-    align-items: right;
-    max-width: 50%;
-    justify-content: right;
-} */
 
 .choiceText {
     font-size: 18px;
@@ -115,7 +89,6 @@ div#playerSideSelection {
     align-items: center;
     justify-content: center;
     padding: 0px 16px;
-    /* gap: 32px; */
     max-width: 50%
 }
 
@@ -125,7 +98,6 @@ div#computerSideSelection {
     align-items: center;
     justify-content: center;
     padding: 0px 16px;
-    /* gap: 32px; */
     max-width: 50%
 }
 
@@ -145,9 +117,9 @@ div#footer {
     display: block;
     flex-direction: row;
     flex: 1 1 auto;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-
+    
 }
 
 p#attribution {
@@ -158,7 +130,6 @@ p#attribution {
 
 #footerRight {
     display: block;
-    /* width: 100%; */
     justify-content: center;
 }
 
