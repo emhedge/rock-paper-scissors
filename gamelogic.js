@@ -9,7 +9,7 @@ const divScore = document.querySelector('div#score');
 const pScore = document.createElement('p');
 const cScore = document.createElement('p');
 pScore.textContent = 'Player score: ' + playerScore;
-cScore.textContent = 'Computer score: ' + computerScore;
+cScore.textContent = 'CPU score: ' + computerScore;
 
 const buttons = document.querySelector('div#selections .selections');
 
@@ -177,17 +177,17 @@ function playRound(playerSelection, computerSelection) {
                 results.textContent = "Oops, that\'s not one of the options. Try again.";
         }    
         playerChoice.textContent = "Your selection: " + playerSelection;  
-        computerChoice.textContent = "Computer\'s selection: " + computerSelection;
+        computerChoice.textContent = "CPU selection: " + computerSelection;
         
 
 
         pScore.textContent = 'Player score: ' + playerScore;
-        cScore.textContent = 'Computer score: ' + computerScore;
+        cScore.textContent = 'CPU score: ' + computerScore;
 
         
         if (playerScore === 5) {
                 resultsHeading.textContent = "Game results:"
-                results.textContent = "Hey, not bad! You beat me.";
+                results.textContent = "Hey, not bad! You win.";
                 wipeScore();
                 console.log('game over');
         } else if (computerScore === 5) {
