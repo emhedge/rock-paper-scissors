@@ -1,20 +1,22 @@
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Monaco", sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
+    /* justify-content: space-between; */
     /* background-image: linear-gradient(to bottom right, #4F0341, #FFFFFF); */
     background-color: #FDF8F0;
     color: #4F0341;
 }
 
 #heading {
-    margin-top: 32px;
+    margin-top: 22px;
 }
 
 #heading h1 {
     margin-bottom: 0px;
+    justify-content: center;
 }
 
 div#selections {
@@ -130,8 +132,6 @@ div#computerSideSelection {
 img.choiceThumb {
     width: 200px;
     height: 200px;
-    
-    
 }
 
 p#gameResults {
@@ -140,3 +140,31 @@ p#gameResults {
     justify-content: center;
     align-items: center;
 }
+
+div#footer {
+    display: block;
+    flex-direction: row;
+    flex: 1 1 auto;
+    align-items:center;
+    justify-content: center;
+
+}
+
+p#attribution {
+    display:flex;
+    font-size: 10px;
+    justify-content: center;
+}
+
+#footerRight {
+    display: block;
+    /* width: 100%; */
+    justify-content: center;
+}
+
+#footerText {
+    display:flex;
+    justify-content: center;
+    
+}
+

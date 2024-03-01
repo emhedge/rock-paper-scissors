@@ -20,16 +20,27 @@ selectionsPlaceholder.textContent = "Pick your sign, then we'll see who wins."
 const divResults = document.querySelector('div#results');
 const resultsHeading = document.createElement('h2');
 const results = document.createElement('p');
+const gameSelections = document.createElement('div');
+const playerSideSelection = document.createElement('div');
+const computerSideSelection = document.createElement('div');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
 const playerChoiceThumb = document.createElement('img');
 const computerChoiceThumb = document.createElement('img');
+const footer = document.querySelector('div#footer');
+// const footerLeft = document.createElement('div');
+// const footerRight = document.createElement('div');
+// const footerLeftText= document.createElement('p');
+// const footerRightText= document.createElement('p');
 
-const gameSelections = document.createElement('div');
-const playerSideSelection = document.createElement('div');
-const computerSideSelection = document.createElement('div');
+// footerLeftText.textContent = "";
+// footerRightText.textContent = "Copyright ©" + <a href="">emhedge</a> + "2024";
+resultsHeading.textContent = "Round results: ";
 
-resultsHeading.textContent = 'Round results: ';
+// footerLeft.appendChild(footerLeftText)
+// footerRight.appendChild(footerRightText);
+// footer.appendChild(footerLeft);
+// footer.appendChild(footerRight);
 
 divScore.appendChild(pScore);
 divScore.appendChild(cScore);
@@ -45,6 +56,11 @@ divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
 divResults.appendChild(results);
 
+// divResults.appendChild(footer);
+
+playerChoiceThumb.src = './images/player-placeholder.svg';
+computerChoiceThumb.src = './images/computer-placeholder.svg';
+
 pScore.setAttribute('class', 'score');
 cScore.setAttribute('class', 'score');
 resultsHeading.setAttribute('class', 'resultsHeading')
@@ -56,6 +72,9 @@ playerChoiceThumb.setAttribute('class', 'choiceThumb');
 computerSideSelection.setAttribute('id', 'computerSideSelection');
 computerChoice.setAttribute('class', 'choiceText');
 computerChoiceThumb.setAttribute('class', 'choiceThumb');
+// footer.setAttribute('id', 'footer');
+// footerLeft.setAttribute('id', 'footerLeft');
+// footerRight.setAttribute('id', 'footerRight');
 
 // function for playerPoint
 function playerPoint() {
