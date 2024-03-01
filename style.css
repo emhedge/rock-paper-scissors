@@ -6,6 +6,14 @@ body {
     align-items: center;
 }
 
+#heading {
+    margin-top: 32px;
+}
+
+#heading h1 {
+    margin-bottom: 0px;
+}
+
 #score {
     display: flex;
     flex-direction: row;
@@ -72,7 +80,14 @@ h2.resultsHeading {
 } */
 
 .choiceText {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.placeholder {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
 }
 
 div#playerSideSelection {
@@ -80,8 +95,8 @@ div#playerSideSelection {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px 16px;
-    gap: 32px;
+    padding: 0px 16px;
+    /* gap: 32px; */
     max-width: 50%
 }
 
@@ -90,8 +105,8 @@ div#computerSideSelection {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px 16px;
-    gap: 32px;
+    padding: 0px 16px;
+    /* gap: 32px; */
     max-width: 50%
 }
 

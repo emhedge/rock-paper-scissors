@@ -11,19 +11,17 @@ const cScore = document.createElement('p');
 pScore.textContent = 'Player score: ' + playerScore;
 cScore.textContent = 'Computer score: ' + computerScore;
 
+const buttons = document.querySelector('div#selections .selections');
 
+const selectionsPlaceholder = document.createElement('p');
+selectionsPlaceholder.setAttribute('class', 'placeholder');
+selectionsPlaceholder.textContent = "Pick your sign, then we'll see who wins."
 
 const divResults = document.querySelector('div#results');
 const resultsHeading = document.createElement('h2');
-
-
-const buttons = document.querySelector('div#selections .selections');
-
 const results = document.createElement('p');
-// const choicesText = document.createElement('div');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
-// const choicesImg = document.createElement('div');
 const playerChoiceThumb = document.createElement('img');
 const computerChoiceThumb = document.createElement('img');
 
@@ -42,6 +40,7 @@ computerSideSelection.appendChild(computerChoice);
 computerSideSelection.appendChild(computerChoiceThumb);
 gameSelections.appendChild(playerSideSelection);
 gameSelections.appendChild(computerSideSelection);
+divResults.appendChild(selectionsPlaceholder);
 divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
 divResults.appendChild(results);
@@ -121,7 +120,10 @@ btnScissors.addEventListener('click', () => {
         playerChoiceThumb.src = './images/player-scissors.svg';               
 });
 
+let playedGames = 0;
 
+
+        // selectionsPlaceholder.style = ('margin-top', '0px')
 
 // function for a single round
 // work through the iterations of rock and alternatives
@@ -129,8 +131,11 @@ btnScissors.addEventListener('click', () => {
 // then scissors and the alternatives
 // not efficient, but it works; can clean it up and streamline later
 function playRound(playerSelection, computerSelection) {
-        
-        // to achieve best of five games logic, consider changing it to computerPoint += 1 and returning 1 if game played and 0 if tied
+
+        if (playedGames < 1) {
+                divResults.removeChild(selectionsPlaceholder);
+        } 
+        playedGames += 1;
 
         switch (computerSelection) {
                 case 'Rock':
@@ -181,10 +186,12 @@ function playRound(playerSelection, computerSelection) {
 
         
         if (playerScore === 5) {
+                resultsHeading.textContent = "Game results:"
                 results.textContent = "Hey, not bad! You beat me.";
                 wipeScore();
                 console.log('game over');
         } else if (computerScore === 5) {
+                resultsHeading.textContent = "Game results:"
                 results.textContent = "Oof, maybe you should practice some more. I win.";
                 wipeScore();
                 console.log('game over');
