@@ -22,6 +22,7 @@ body {
 div#selections {
     display: flex;
     gap: 22px;
+    /* margin-bottom: 32px; */
 }
 
 button {
@@ -81,6 +82,7 @@ h2.resultsHeading {
     display: flex;
     justify-content: center;
     font-size: 18px;
+    /* margin: 0px 0px; */
 }
 
 div#playerSideSelection {

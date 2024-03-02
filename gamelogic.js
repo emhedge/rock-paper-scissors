@@ -33,8 +33,18 @@ const playerChoiceThumb = document.createElement('img');
 const computerChoiceThumb = document.createElement('img');
 const footer = document.querySelector('div#footer');
 
-// placeholder text
-
+// set class and IDs
+pScore.setAttribute('class', 'score');
+cScore.setAttribute('class', 'score');
+resultsHeading.setAttribute('class', 'resultsHeading')
+results.setAttribute('id', 'gameResults')
+gameSelections.setAttribute('id', 'gameSelections');
+playerSideSelection.setAttribute('id', 'playerSideSelection');
+playerChoice.setAttribute('class', 'choiceText');
+playerChoiceThumb.setAttribute('class', 'choiceThumb');
+computerSideSelection.setAttribute('id', 'computerSideSelection');
+computerChoice.setAttribute('class', 'choiceText');
+computerChoiceThumb.setAttribute('class', 'choiceThumb');
 
 // append main page nodes and elements
 divScore.appendChild(pScore);
@@ -50,20 +60,28 @@ divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
 divResults.appendChild(results);
 
+// placeholder img srcs
 playerChoiceThumb.src = './images/player-placeholder.svg';
 computerChoiceThumb.src = './images/computer-placeholder.svg';
 
-pScore.setAttribute('class', 'score');
-cScore.setAttribute('class', 'score');
-resultsHeading.setAttribute('class', 'resultsHeading')
-results.setAttribute('id', 'gameResults')
-gameSelections.setAttribute('id', 'gameSelections');
-playerSideSelection.setAttribute('id', 'playerSideSelection');
-playerChoice.setAttribute('class', 'choiceText');
-playerChoiceThumb.setAttribute('class', 'choiceThumb');
-computerSideSelection.setAttribute('id', 'computerSideSelection');
-computerChoice.setAttribute('class', 'choiceText');
-computerChoiceThumb.setAttribute('class', 'choiceThumb');
+// preload playerChoiceThumb and computerChoiceThumb srcs
+let images = [];
+function preload() {
+    for (let i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+//-- usage --//
+preload(
+    "./images/player-rock.svg",
+    "./images/player-paper.svg",
+    "./images/player-scissors.svg",
+    "./images/computer-rock.svg",
+    "./images/computer-paper.svg",
+    "./images/computer-scissors.svg"
+)
 
 // function for playerPoint
 function playerPoint() {
