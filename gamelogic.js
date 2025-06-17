@@ -15,10 +15,7 @@ cScore.textContent = 'CPU score: ' + computerScore;
 
 const buttons = document.querySelector('div#selections .selections');
 
-// init declaration of placeholder content to avoid page shifts
-const selectionsPlaceholder = document.createElement('p');
-selectionsPlaceholder.setAttribute('class', 'placeholder');
-selectionsPlaceholder.textContent = "When you're ready, pick your move."
+
 
 // init declaration of page elements
 const divResults = document.querySelector('div#results');
@@ -32,6 +29,11 @@ const computerChoice = document.createElement('p');
 const playerChoiceThumb = document.createElement('img');
 const computerChoiceThumb = document.createElement('img');
 const footer = document.querySelector('div#footer');
+
+// init declaration of placeholder content to avoid page shifts
+const selectionsPlaceholder = document.createElement('p');
+selectionsPlaceholder.setAttribute('class', 'placeholder');
+selectionsPlaceholder.textContent = "When you're ready, pick your move."
 
 // set class and IDs
 pScore.setAttribute('class', 'score');
@@ -55,9 +57,9 @@ computerSideSelection.appendChild(computerChoice);
 computerSideSelection.appendChild(computerChoiceThumb);
 gameSelections.appendChild(playerSideSelection);
 gameSelections.appendChild(computerSideSelection);
-divResults.appendChild(selectionsPlaceholder);
 divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
+divResults.appendChild(selectionsPlaceholder);
 divResults.appendChild(results);
 
 // placeholder img srcs
@@ -222,6 +224,11 @@ function playRound(playerSelection, computerSelection) {
                 results.textContent = "Oops, that\'s not one of the options. Try again.";
         }
         
+
+        function gameOverPopup() {
+                
+        }
+
         // updates player score and selection
         pScore.textContent = 'Player score: ' + playerScore;
         cScore.textContent = 'CPU score: ' + computerScore;
