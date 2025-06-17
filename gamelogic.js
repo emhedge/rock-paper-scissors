@@ -173,28 +173,49 @@ function playRound(playerSelection, computerSelection) {
 
         resultsHeading.textContent = "Round results: ";
 
+        function highlightScore(whoScored) {
+                if (whoScored === "computer") {
+                        cScore.classList.add("highlight");
+                        setTimeout(() => {
+                                cScore.classList.remove("highlight");
+                                }, 300);
+                } else if (whoScored === "player") {
+                        pScore.classList.add("highlight");
+                        setTimeout(() => {
+                                pScore.classList.remove("highlight");
+                                }, 300);
+                                      
+                }
+        }
+
         if (playerSelection === "Rock" && computerSelection === "Paper") {
                 results.textContent = "You lose! Paper beats Rock!";
                 computerPoint();
+                highlightScore("computer");
         }   else if (playerSelection === "Rock" && computerSelection === "Scissors") {
                 results.textContent = "You win! Rock beats Scissors!";
                 playerPoint();
+                highlightScore("player");
         }   else if (playerSelection === "Rock" && computerSelection === "Rock") {
                 results.textContent = "Draw. Try again!";
         }   else if (playerSelection === "Paper" && computerSelection === "Scissors") {
                 results.textContent = "You lose! Scissors beats Paper!";
                 computerPoint();
+                highlightScore("computer");
         }   else if (playerSelection === "Paper" && computerSelection === "Rock") {
                 results.textContent = "You win! Paper beats Rock!";
                 playerPoint();
+                highlightScore("player");
         }   else if (playerSelection === "Paper" && computerSelection === "Paper") {
                 results.textContent = "Draw. Try again!";
         }   else if (playerSelection === "Scissors" && computerSelection === "Rock") {
                 results.textContent = "You lose! Rock beats Scissors!";
                 computerPoint();
+                highlightScore("computer");
         }   else if (playerSelection === "Scissors" && computerSelection === "Paper") {
                 results.textContent = "You win! Scissors beats Paper!";
                 playerPoint();
+                highlightScore("player");
         }   else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
                 results.textContent = "Draw. Try again!";
         }   else {
