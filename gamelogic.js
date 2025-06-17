@@ -116,34 +116,26 @@ function getComputerSelection(randomOption, computerSelection) {
 // playRound() along with getComputerSelection();
 // passes corresponding img src to playerChoiceThumb
 const btnRock = document.querySelector('#selections #rock');
+btnRock.innerHTML = '<img src="./images/rock.svg" />';
 btnRock.addEventListener('click', () => {
+        playerChoiceThumb.src = './images/player-rock.svg';
         playRound("Rock", getComputerSelection());               
 });
 
-btnRock.innerHTML = '<img src="./images/rock.svg" />';
-btnRock.addEventListener('click', () => {
-        playerChoiceThumb.src = './images/player-rock.svg';               
-});
-
 const btnPaper = document.querySelector('#selections #paper');
-btnPaper.addEventListener('click', () => {
-        playRound("Paper", getComputerSelection());
-});
-
 btnPaper.innerHTML = '<img src="./images/paper.svg" />';
 btnPaper.addEventListener('click', () => {
         playerChoiceThumb.src = './images/player-paper.svg';               
+        playRound("Paper", getComputerSelection());
 });
 
 const btnScissors = document.querySelector('#selections #scissors');
-btnScissors.addEventListener('click', () => {
-        playRound("Scissors", getComputerSelection());
-});
-
 btnScissors.innerHTML = '<img src="./images/scissors.svg" />';
 btnScissors.addEventListener('click', () => {
         playerChoiceThumb.src = './images/player-scissors.svg';               
+        playRound("Scissors", getComputerSelection());
 });
+
 
 // init declaration to ensure selectionsPlaceholder is removed
 // only after the first round;
@@ -241,10 +233,18 @@ function playRound(playerSelection, computerSelection) {
         if (playerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Hey, not bad! You win.";
+                computerChoiceThumb.src = './images/dunce.jpeg';
+                playerChoiceThumb.src = './images/crown.jpeg';
+                playerChoice.setAttribute("style", "margin-bottom: 20px")
+                computerChoice.setAttribute("style", "margin-bottom: 20px")
                 wipeScore();
         } else if (computerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Oof, you should practice some more. I win.";
+                playerChoiceThumb.src = './images/dunce.jpeg';
+                computerChoiceThumb.src = './images/crown.jpeg';
+                playerChoice.setAttribute("style", "margin-bottom: 20px")
+                computerChoice.setAttribute("style", "margin-bottom: 20px")
                 wipeScore();
         }
 }  
