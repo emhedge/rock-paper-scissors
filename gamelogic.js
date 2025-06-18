@@ -21,6 +21,7 @@ const buttons = document.querySelector('div#selections .selections');
 const divResults = document.querySelector('div#results');
 const resultsHeading = document.createElement('h2');
 const results = document.createElement('p');
+const callToAction = document.createElement('p');
 const gameSelections = document.createElement('div');
 const playerSideSelection = document.createElement('div');
 const computerSideSelection = document.createElement('div');
@@ -39,7 +40,9 @@ selectionsPlaceholder.textContent = "When you're ready, pick your move."
 pScore.setAttribute('class', 'score');
 cScore.setAttribute('class', 'score');
 resultsHeading.setAttribute('class', 'resultsHeading')
-results.setAttribute('id', 'gameResults')
+results.setAttribute('class', 'gameResults')
+// callToAction.setAttribute('class', 'gameResults')
+callToAction.setAttribute('class', 'callToAction')
 gameSelections.setAttribute('id', 'gameSelections');
 playerSideSelection.setAttribute('id', 'playerSideSelection');
 playerChoice.setAttribute('class', 'choiceText');
@@ -61,6 +64,7 @@ divResults.appendChild(gameSelections);
 divResults.appendChild(resultsHeading);
 divResults.appendChild(selectionsPlaceholder);
 divResults.appendChild(results);
+divResults.appendChild(callToAction);
 
 // placeholder img srcs
 playerChoiceThumb.src = './images/player-placeholder.svg';
@@ -287,9 +291,9 @@ function playRound(playerSelection, computerSelection) {
         }
         
 
-        function gameOverPopup() {
+        // function gameOverPopup() {
                 
-        }
+        // }
 
         // updates player score and selection
         pScore.textContent = 'Player score: ' + playerScore;
@@ -303,6 +307,7 @@ function playRound(playerSelection, computerSelection) {
         if (playerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Hey, not bad! You win.";
+                callToAction.textContent = "Pick your next move to start a new game."
                 // computerChoiceThumb.src = './images/computer-scissors-lose.svg';
                 // playerChoiceThumb.src = './images/player-scissors-win.svg';
                 loadEndGamePic({playerWon: true, computerWon: false});
@@ -310,6 +315,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Oof, you should practice some more. I win.";
+                callToAction.textContent = "Pick your next move to start a new game."
                 // playerChoiceThumb.src = './images/player-scissors-lose.svg';
                 // computerChoiceThumb.src = './images/computer-scissors-win.svg';
                 loadEndGamePic({playerWon: true, computerWon: false});

@@ -115,11 +115,19 @@ img.choiceThumb {
     height: 200px;
 }
 
-p#gameResults {
+p.gameResults {
     display: flex;
     font-size: 20px;
     justify-content: center;
     align-items: center;
+}
+
+p.callToAction {
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
 }
 
 div#footer {
