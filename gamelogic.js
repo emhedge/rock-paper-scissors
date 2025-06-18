@@ -77,12 +77,29 @@ function preload() {
 
 //-- usage --//
 preload(
+// playerChoiceThumbs
     "./images/player-rock.svg",
     "./images/player-paper.svg",
     "./images/player-scissors.svg",
+// computerChoiceThumbs
     "./images/computer-rock.svg",
     "./images/computer-paper.svg",
-    "./images/computer-scissors.svg"
+    "./images/computer-scissors.svg",
+// game over computerChoiceThumbs
+    './images/computer-scissors-win.svg',
+    './images/computer-scissors-lose.svg',
+    "./images/computer-rock-win.svg",
+    "./images/computer-rock-lose.svg",
+    "./images/computer-paper-win.svg",
+    "./images/computer-paper-lose.svg",
+// game over playerChoiceThumbs
+    './images/player-scissors-win.svg',
+    './images/player-scissors-lose.svg',
+    "./images/player-rock-win.svg",
+    "./images/player-rock-lose.svg",
+    "./images/player-paper-win.svg",
+    "./images/player-paper-lose.svg",
+    
 )
 
 // function for playerPoint
@@ -182,6 +199,59 @@ function playRound(playerSelection, computerSelection) {
                 }
         }
 
+        function loadEndGamePic(playerWon, computerWon) {
+                if (playerWon) {
+                        switch(playerSelection) {
+                                case 'Rock':
+                                        playerChoiceThumb.src = "./images/player-rock-win.svg";
+                                        break;
+                                case 'Paper':
+                                        playerChoiceThumb.src = "./images/player-paper-win.svg";
+                                        break;
+                                case 'Scissors':
+                                        playerChoiceThumb.src = './images/player-scissors-win.svg';
+                                        break;
+                        };
+                        switch(computerSelection) {
+                                case 'Rock':
+                                        computerChoiceThumb.src =  "./images/computer-rock-lose.svg";
+                                        break;
+                                case 'Paper':
+                                        computerChoiceThumb.src = "./images/computer-paper-lose.svg";
+                                        break;
+                                case 'Scissors':
+                                        computerChoiceThumb.src = './images/computer-scissors-lose.svg';
+                                        break;
+                        };
+
+                }
+                if (computerWon) {
+                        switch(playerSelection) {
+                                case 'Rock':
+                                        playerChoiceThumb.src = "./images/player-rock-lose.svg";
+                                        break;
+                                case 'Paper':
+                                        playerChoiceThumb.src = "./images/player-paper-lose.svg";
+                                        break;
+                                case 'Scissors':
+                                        playerChoiceThumb.src = './images/player-scissors-lose.svg';
+                                        break;
+                        };
+                        switch(computerSelection) {
+                                case 'Rock':
+                                        computerChoiceThumb.src =  "./images/computer-rock-win.svg";
+                                        break;
+                                case 'Paper':
+                                        computerChoiceThumb.src = "./images/computer-paper-win.svg";
+                                        break;
+                                case 'Scissors':
+                                        computerChoiceThumb.src = './images/computer-scissors-win.svg';
+                                        break;
+                        };
+
+                }
+        }
+
         if (playerSelection === "Rock" && computerSelection === "Paper") {
                 results.textContent = "You lose! Paper beats Rock!";
                 computerPoint();
@@ -233,18 +303,16 @@ function playRound(playerSelection, computerSelection) {
         if (playerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Hey, not bad! You win.";
-                computerChoiceThumb.src = './images/dunce.jpeg';
-                playerChoiceThumb.src = './images/crown.jpeg';
-                playerChoice.setAttribute("style", "margin-bottom: 20px")
-                computerChoice.setAttribute("style", "margin-bottom: 20px")
+                // computerChoiceThumb.src = './images/computer-scissors-lose.svg';
+                // playerChoiceThumb.src = './images/player-scissors-win.svg';
+                loadEndGamePic({playerWon: true, computerWon: false});
                 wipeScore();
         } else if (computerScore === 5) {
                 resultsHeading.textContent = "Game results:"
                 results.textContent = "Oof, you should practice some more. I win.";
-                playerChoiceThumb.src = './images/dunce.jpeg';
-                computerChoiceThumb.src = './images/crown.jpeg';
-                playerChoice.setAttribute("style", "margin-bottom: 20px")
-                computerChoice.setAttribute("style", "margin-bottom: 20px")
+                // playerChoiceThumb.src = './images/player-scissors-lose.svg';
+                // computerChoiceThumb.src = './images/computer-scissors-win.svg';
+                loadEndGamePic({playerWon: true, computerWon: false});
                 wipeScore();
         }
 }  
