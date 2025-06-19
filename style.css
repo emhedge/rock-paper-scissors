@@ -19,7 +19,7 @@ body {
     justify-content: center;
 }
 
-div#selections {
+div.selections {
     display: flex;
     gap: 22px;
     /* margin-bottom: 32px; */
