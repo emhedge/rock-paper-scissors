@@ -138,6 +138,7 @@ function getComputerSelection(randomOption, computerSelection) {
 // passes corresponding img src to playerChoiceThumb
 const btnRock = document.querySelector('#selections #rock');
 btnRock.innerHTML = '<img src="./images/rock.svg" />';
+
 btnRock.addEventListener('click', () => {
         playerChoiceThumb.src = './images/player-rock.svg';
         playRound("Rock", getComputerSelection());               
@@ -157,6 +158,22 @@ btnScissors.addEventListener('click', () => {
         playRound("Scissors", getComputerSelection());
 });
 
+// debugging function to save mouse clicks
+document.addEventListener('keydown', function(event) {
+        switch (event.key) {
+                case '1':
+                        btnRock.click();
+                        break;
+                case '2':
+                        btnPaper.click();
+                        break;
+                case '3':
+                        btnScissors.click();
+                        break;
+                default:
+                        break;
+        }
+      });
 
 // init declaration to ensure selectionsPlaceholder is removed
 // only after the first round;
@@ -294,6 +311,8 @@ function playRound(playerSelection, computerSelection) {
         // function gameOverPopup() {
                 
         // }
+
+
 
         // updates player score and selection
         pScore.textContent = 'Player score: ' + playerScore;
