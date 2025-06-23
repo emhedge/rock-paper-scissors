@@ -19,7 +19,7 @@ body {
     justify-content: center;
 }
 
-div.selections {
+div#selections {
     display: flex;
     gap: 22px;
     /* margin-bottom: 32px; */
@@ -29,11 +29,6 @@ button {
     border-radius: 5px;
     padding: 8px;
     background-color: #d7d7be;
-}
-
-.highlight {
-    background-color: black;
-    color: yellow;
 }
 
 #score {
@@ -46,8 +41,6 @@ button {
     justify-content: center;
     align-items: space-between;
 }
-
-
 
 p.score {
     display: flex;
@@ -88,7 +81,7 @@ h2.resultsHeading {
 .placeholder {
     display: flex;
     justify-content: center;
-    font-size: 24px;
+    font-size: 18px;
     /* margin: 0px 0px; */
 }
 
@@ -111,23 +104,15 @@ div#computerSideSelection {
 }
 
 img.choiceThumb {
-    width: 180px;
+    width: 200px;
     height: 200px;
 }
 
-p.gameResults {
+p#gameResults {
     display: flex;
     font-size: 20px;
     justify-content: center;
     align-items: center;
-}
-
-p.callToAction {
-    display: flex;
-    font-size: 20px;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 0px 20px 0px;
 }
 
 div#footer {
@@ -156,25 +141,3 @@ p#attribution {
     
 }
 
-/* in progress work with a game over overlay popup */
-#overlay {
-    position: relative;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.363);
-}
-
-#popup {
-    width: 500px;
-    height: 400px;
-    background: #d7d7be;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-}
