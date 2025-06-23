@@ -67,8 +67,8 @@ divResults.appendChild(results);
 divResults.appendChild(callToAction);
 
 // placeholder img srcs
-playerChoiceThumb.src = './images/player-placeholder.svg';
-computerChoiceThumb.src = './images/computer-placeholder.svg';
+playerChoiceThumb.src = './images/player-edit.svg';
+computerChoiceThumb.src = './images/robot-edit.svg';
 
 // preload playerChoiceThumb and computerChoiceThumb srcs
 let images = [];
@@ -150,20 +150,20 @@ const btnRock = document.querySelector('#selections #rock');
 const btnPaper = document.querySelector('#selections #paper');
 const btnScissors = document.querySelector('#selections #scissors');
 document.addEventListener('keydown', function(event) {
-        switch (event.key) {
-                case '1':
-                        btnRock.click();
-                        break;
-                case '2':
-                        btnPaper.click();
-                        break;
-                case '3':
-                        btnScissors.click();
-                        break;
-                default:
-                        break;
-        }
-      });
+    switch (event.key) {
+            case '1':
+                    btnRock.click();
+                    break;
+            case '2':
+                    btnPaper.click();
+                    break;
+            case '3':
+                    btnScissors.click();
+                    break;
+            default:
+                    break;
+    }
+});
 
 // init declaration to ensure selectionsPlaceholder is removed
 // only after the first round;
